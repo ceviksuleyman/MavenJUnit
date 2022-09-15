@@ -1,4 +1,4 @@
-package day04;
+package day04_Maven;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
@@ -65,7 +65,6 @@ public class Task02 {
 
         //kapat
         driver.close();
-
 
     }
 }
