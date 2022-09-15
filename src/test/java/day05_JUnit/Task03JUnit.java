@@ -1,6 +1,9 @@
-package day04;
+package day05_JUnit;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -8,29 +11,28 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
-import java.util.Arrays;
 
-public class Task03 {
-    /*
-    1.“https://www.saucedemo.com”Adresine gidin
-    2.Username kutusuna “standard_user” yazdirin
-    3.Password kutusuna “secret_sauce” yazdirin
-    4.Login tusunabasin
-    5.Ilk urunun ismini kaydedin ve bu urunun sayfasina gidin
-    6.Add to Cart butonuna basin
-    7.Alisveris sepetine tiklayin
-    8.Sectiginiz urunun basarili olarak sepete eklendigini control edin
-    9.Sayfayi kapatin
-     */
+public class Task03JUnit {
 
-    public static void main(String[] args) throws InterruptedException {
+
+    WebDriver driver;
+
+    @Before
+    public void setUp(){
 
         WebDriverManager.chromedriver().setup();
-        WebDriver driver = new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
         driver.manage().window().maximize();
+    }
+    @After
+    public void tearDown() throws InterruptedException {
+        Thread.sleep(2000);
+        driver.close();
+    }
 
-
+    @Test
+    public void test03() throws InterruptedException {
 
         // “https://www.saucedemo.com”  Adresine gidin
         driver.get("https://www.saucedemo.com");
@@ -83,9 +85,5 @@ public class Task03 {
 
         if (sepet.getText().contains(urunIsmi)) System.out.println("Urun Sepete Eklendi PASSED");
         else System.out.println("Urun Sepete Eklendi FAIL");
-
-
-        //kapat
-        driver.close();
     }
 }
