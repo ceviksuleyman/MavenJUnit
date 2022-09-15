@@ -1,43 +1,49 @@
 => assertEquals()
-assertEquals , beklenen sonucu gerçek sonuç ile karşılaştırmak için kullanılır.
-Beklenen sonuç ile gerçek sonuç eşit değil ise gerçekleştirilen test senaryosu sonucunda assertionError hatası fırlatır.
+Beklenen sonucu gercek sonuc ile karsilastirmak icin kullanilir.
+Beklenen sonuc ile gercek sonuc esit degilse gerceklestirilen test senaryosu sonucunda
+assertionError hatasi verir.
+
 
 
 => assertTrue()
-assertTrue, beklenen bir sonucun true olduğunun kabul edilmesi gerektiği zaman kullanılır.
-Parametre olarak iki değer alır.
-İlk parametre de bir mesaj gönderilir ikinci parametrede ise gönderilen mesajın doğruluğu için koşul belirlenir.
+Beklenen bir sonucun "true" oldugunun kabul edilmesi gerektigi zaman kullanilir.
+Parametre olarak iki deger alir,ilk parametrede bir mesaj gonderilir ikinci parametrede ise
+gonderilen mesajin dogrulugu icin kosul belirlenir.
+
 
 
 => assertFalse()
-assertFalse, beklenen bir sonucun false olması durumunda kullanılır.
-İki parametre alır. Parametrelerden biri mesajdır diğeri ise koşuldur.
-assertFalse ile koşul yerine getirilmez ise assertionError hatası fırlatır.
+Beklenen bir sonucun "false" olmasi durumunda beklenir,iki parametre alir.
+Parametrelerden biri mesajdir digeri ise kosuldur.
+assertFalse() method'u ile kosul yerine getirilmezse assertionError hatasi verir.
+
 
 
 => assertNull()
-assertNull, beklenen bir sonucun null olup olmadığı kontrol edilmesi için kullanılır.
- Bir nesneyi parametre olarak alır ve nesne null değil ise assertionError hatası fırlatır.
+Beklenen bir sonucun Null olup olmadigini kontrol edilmesi icin kullanilir.
+Bir nesneyi parametre olarak alir ve nesne Null degilse assertionError verir.
+
 
 
 => assertNotNull()
-assertNotNull, beklenen bir sonucun null olmadığını doğrulamak için kullanılır.
-Bir nesneyi parametre olarak alır ve nesne null ise assertionError hatası fırlatır.
+Beklenen bir sonucun Null olmadigini dogrulamak icin kullanilir.
+Bir nesneyi parametre olarak alir ve nesne Null ise assertionError verir.
+
 
 
 => assertSame()
-assertSame, parametre olarak verilen iki nesnenin aynı nesneye karşılık gelip gelmediğini kontrol eder.
-Eğer nesneler aynı nesneyi karşılamıyor ise assertionError hatası fırlatır.
+Parametre olarak iki nesnenin ayni nesneye karsilik gelip gelmedigini kontrol eder.
+Eger nesneler ayni nesneyi karsilamiyorsa assertionError verir.
 
 
 
 => assertNotSame()
-assertNotSame, parametre olarak verilen iki nesnenin birbirine eşit olmadığı kontrolünü eder.
-Eğer aynı nesneye karşılık geliyor ise assertionError hatası fırlatır.
-
+Parametre olarak verilen iki nesnenin birbirine esit olmadigini kontrol eder.
+Eger ayni nesneye karsilik geliyorsa assertionError hatasi verir.
 
 
 => assertArrayEquals()
-assertArrayEquals, parametre olarak verilen iki dizinin eşit olup olmadığını kontrol eder.
-Her iki dizi içinde null değeri var ise bunlar eşit olarak kabul edilir. Eğer eşit değil ise assertionError hatası fırlatır.
+Parametre olarak verilen iki dizinin esit olup olmadigini kontrol eder.
+Her iki dizi icinde de NULL deger var ise bunlar esit olarak kabul edilir,eger esit degilse assertionError hatasi verir.
+
 
