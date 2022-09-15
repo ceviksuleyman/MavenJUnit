@@ -16,7 +16,7 @@ public class Task02 {
      * Sayfa basliginin “Google” ifadesi icerdigini testedin
      * Arama cubuguna “Nutella” yazip aratin
      * Bulunan sonuc sayisini yazdirin
-     * sonucsayisinin10milyon’dan fazla oldugunu test edin
+     * sonuc sayisinin 10milyon’dan fazla oldugunu test edin
      * Sayfayi kapatin
      */
     public static void main(String[] args) throws InterruptedException {

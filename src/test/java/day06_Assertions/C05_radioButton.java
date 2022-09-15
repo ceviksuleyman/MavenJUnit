@@ -1,4 +1,4 @@
-package day05_JUnit;
+package day06_Assertions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class Task02 {
+public class C05_radioButton {
     /*
     -https://www.facebook.com adresinegidin
     - Cookies’i kabuledin

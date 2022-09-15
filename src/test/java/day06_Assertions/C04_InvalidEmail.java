@@ -13,12 +13,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C04_Task {
+public class C04_InvalidEmail {
      /*
-    - Bir Class olusturalimYanlisEmailTesti
+    - Bir Class olusturalim YanlisEmailTesti
     - http://automationpractice.com/index.php sayfasina gidelim
     - Sign in butonuna basalim
-    - Email kutusuna @isareti olmayan bir mail yazip enter’a bastigimizda
+    - Email kutusuna @ isareti olmayan bir mail yazip enter’a bastigimizda
       “Invalid email address” uyarisi ciktigini testedelim
      */
 
@@ -32,7 +32,7 @@ public class C04_Task {
         Thread.sleep(2000);
 
 
-        // Email kutusuna @isareti olmayan bir mail yazip enter’a bastigimizda
+        // Email kutusuna @ isareti olmayan bir mail yazip enter’a bastigimizda
         WebElement emailBox = driver.findElement(By.xpath("//*[@id='email']"));
         emailBox.sendKeys("ali.com", Keys.ENTER);
 

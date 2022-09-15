@@ -1,4 +1,4 @@
-package day05_JUnit;
+package automation_exercise;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -34,7 +34,7 @@ public class TC01 {
        */
 
     String userName = "aliia can";  // username degistir
-    String userMail = "aliiaaii@gmail.com";  // mail degistir
+    String userMail = "aliaaii@gmail.com";  // mail degistir
     String firstName = "aliiiii";
     String lastName = "cannnnnn";
     WebDriver driver;
