@@ -44,6 +44,7 @@ Eger ayni nesneye karsilik geliyorsa assertionError hatasi verir.
 
 => assertArrayEquals()
 Parametre olarak verilen iki dizinin esit olup olmadigini kontrol eder.
-Her iki dizi icinde de NULL deger var ise bunlar esit olarak kabul edilir,eger esit degilse assertionError hatasi verir.
+Her iki dizi icinde de NULL deger var ise bunlar esit olarak kabul edilir,
+eger esit degilse assertionError hatasi verir.
 
 
