@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
@@ -20,6 +21,29 @@ public class Task02 {
      */
     WebDriver driver;
 
+    @Test
+    public void test() throws InterruptedException {
+        //https://www.facebook.com adresine gidin
+        driver.get("https://www.facebook.com");
+        Thread.sleep(2000);
+
+        //“Create an Account” button’una basin
+        driver.findElement(By.xpath("//*[.='Yeni Hesap Oluştur']")).click();
+        Thread.sleep(2000);
+
+        //“radio buttons” elementlerini locate edin
+        WebElement female = driver.findElement(By.cssSelector("input[value='1']"));
+        WebElement male = driver.findElement(By.cssSelector("input[value='2']"));
+        WebElement ozel = driver.findElement(By.cssSelector("input[value='-1']"));
+        Thread.sleep(2000);
+        if (!female.isSelected()) female.click();
+        Thread.sleep(2000);
+        if (!male.isSelected()) male.click();
+        Thread.sleep(2000);
+        if (!ozel.isSelected()) ozel.click();
+        Thread.sleep(2000);
+    }
+
     @Before
     public void setUp() {
 
@@ -31,21 +55,6 @@ public class Task02 {
 
     @After
     public void tearDown() {
-        //driver.close();
+        driver.close();
     }
-
-    @Test
-    public void fbTest() throws InterruptedException {
-
-        //-https://www.facebook.com adresinegidin
-        driver.get("https://www.facebook.com");
-        Thread.sleep(2000);
-
-        // - Cookies’i kabuledin
-
-        // -“Create an Account” button’una basin
-        driver.findElement(By.xpath("//*[@class='_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
-
-    }
-
 }
