@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 import java.util.Arrays;
-import java.util.List;
 
 public class C01_MavenIlkTest {
 
@@ -18,48 +17,47 @@ public class C01_MavenIlkTest {
         WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
 
-        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+        driver.manage().window().maximize();
 
-        /*
-        1 https://www.amazon.com/ sayfasinagidelim
-        2 arama kutusunu locateedelim
-        3 “Samsung headphones” ile aramayapalim
-        4 Bulunan sonuc sayisiniyazdiralim
-        5 Ilk urunutiklayalim
-        6 Sayfadaki tum basliklariyazdiralim
-         */
 
-        // 1
+        // 1 https://www.amazon.com/ sayfasina git
         driver.get("https://www.amazon.com");
 
 
-        // 2
+
+        // 2 arama kutusunu locate et
         WebElement searchBox = driver.findElement(By.id("twotabsearchtextbox"));
-        Thread.sleep(2000);
+        Thread.sleep(3000);
 
 
-        // 3
+
+        // 3 “Samsung headphones” ile arama yap
         searchBox.sendKeys("Samsung headphones", Keys.ENTER);
 
 
-        // 4
+
+        // 4 Bulunan sonuc sayisini yazdir
         WebElement sonucSayisi = driver.findElement(By.xpath("//*[@class='a-section a-spacing-small a-spacing-top-small']"));
-
         String[] sonucArr = sonucSayisi.getText().split(" ");
-        System.out.println(Arrays.toString(sonucArr));
-
+        String sonuc = sonucArr[2];
+        System.out.println("\"Samsung headphones\" arama sonucu -> " + sonuc);
         Arrays.stream(sonucArr).limit(3).skip(2).forEach(System.out::println);
 
 
-        // 5
-        WebElement ilkUrun = driver.findElement(By.cssSelector("img[class='s-image']"));
 
+        // 5 Ilk urunu tikla
+        WebElement ilkUrun = driver.findElement(By.cssSelector("img[class='s-image']"));
         ilkUrun.click();
 
-        // 6
-        String title = driver.getTitle();
-        System.out.println(title);
+
+
+        // 6 Sayfadaki tum basliklari yazdir
+        WebElement titles = driver.findElement(By.xpath("//h1"));
+        System.out.println("Baslik -> " + titles.getText());
+        WebElement titless = driver.findElement(By.xpath("//h2"));
+        System.out.println("Baslik -> " + titless.getText());
+
 
         //kapat
         driver.close();
