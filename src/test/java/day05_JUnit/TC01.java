@@ -33,8 +33,8 @@ public class TC01 {
       18. 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın
        */
 
-    String userName = "aliiiiii can";  // username degistir
-    String userMail = "aliiiiiiii@gmail.com";  // mail degistir
+    String userName = "aliia can";  // username degistir
+    String userMail = "aliiaaii@gmail.com";  // mail degistir
     String firstName = "aliiiii";
     String lastName = "cannnnnn";
     WebDriver driver;
@@ -49,6 +49,7 @@ public class TC01 {
 
     @After
     public void tearDown() {
+
         driver.close();
     }
 
@@ -59,20 +60,24 @@ public class TC01 {
         driver.get("http://www.automationexercise.com");
         Thread.sleep(3000);
 
+
         //Ana sayfanın başarılı bir şekilde görünür olduğunu doğrulayın
         WebElement home = driver.findElement(By.xpath("//*[text()=' Home']"));
         if (home.isDisplayed()) System.out.println("Home Test PASSED");
         else System.out.println("Home Test FAIL");
+
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
         WebElement signIn = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
         signIn.click();
         Thread.sleep(2000);
 
+
         //'Yeni Kullanıcı Kaydı'nı gorunur oldugunu doğrulayın!
         WebElement newUserSignIn = driver.findElement(By.xpath("//*[text()='New User Signup!']"));
         if (newUserSignIn.isDisplayed()) System.out.println("New User SignIn Test PASSED");
         else System.out.println("New User SignIn Test FAIL");
+
 
         // Adı ve e-posta adresini girin
         WebElement name = driver.findElement(By.xpath("//*[@data-qa='signup-name']"));
@@ -88,6 +93,7 @@ public class TC01 {
         WebElement signUp = driver.findElement(By.xpath("//*[text()='Signup']"));
         signUp.click();
         Thread.sleep(3000);
+
 
         //'HESAP BİLGİLERİNİ GİRİN' ifadesinin görünür olduğunu doğrulayın
         WebElement enterAccount = driver.findElement(By.xpath("//*[text()='Enter Account Information']"));
@@ -128,17 +134,16 @@ public class TC01 {
         yearSelect.click();
         Thread.sleep(2000);
 
-
         //'Bültenimize kaydolun!' onay kutusunu seçin.
         WebElement bulten = driver.findElement(By.id("newsletter"));
         bulten.click();
         Thread.sleep(2000);
 
-
         //'Ortaklarımızdan özel teklifler alın!' onay kutusunu seçin.
         WebElement ortaklar = driver.findElement(By.id("optin"));
         ortaklar.click();
         Thread.sleep(2000);
+
 
 
         // Doldurma ayrıntıları: Ad, Soyadı, Şirket, Adres, Adres2, Ülke, Eyalet, Şehir, Posta Kodu, Cep Numarası
@@ -218,6 +223,7 @@ public class TC01 {
         //'Devam' düğmesini tıklayın  //*[text()='Continue']
         WebElement contine = driver.findElement(By.xpath("//*[text()='Continue']"));
         contine.click();
+        Thread.sleep(3000);
 
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
@@ -228,13 +234,17 @@ public class TC01 {
         else System.out.println(userName + " Kullanici adi olarak oturum acildi FAIL");
 
 
+
         //System.out.println(expectedLoggedIn);
         //String[] logged = expectedLoggedIn.split(" ");
         //String isimsoyisim = logged[3] + " " + logged[4];
         //if (isimsoyisim.equals(userName)) System.out.println(userName + " Kullanici adiyla oturum acildi PASS");
         //else System.out.println(userName + " Kullanici adiyla oturum acildi FAIL");
 
-        // 'Hesabı Sil' düğmesini tıklayın  TODO
+
+        // 'Hesabı Sil' düğmesini tıklayın
+        driver.findElement(By.xpath("//*[.=' Delete Account']")).click();
+        Thread.sleep(3000);
 
 
         // 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın TODO
