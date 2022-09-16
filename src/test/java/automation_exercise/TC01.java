@@ -33,10 +33,10 @@ public class TC01 {
       18. 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın
        */
 
-    String userName = "aliia can";  // username degistir
-    String userMail = "aliaaii@gmail.com";  // mail degistir
-    String firstName = "aliiiii";
-    String lastName = "cannnnnn";
+    String userName = "veliiiiii can";  // username degistir
+    String userMail = "veliiiiii@gmail.com";  // mail degistir
+    String firstName = "veli";
+    String lastName = "can";
     WebDriver driver;
 
     @Before
