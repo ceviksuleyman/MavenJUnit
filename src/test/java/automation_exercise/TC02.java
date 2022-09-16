@@ -46,7 +46,7 @@ public class TC02 {
         WebElement emailBox = driver.findElement(By.xpath("//*[@data-qa='login-email']"));
         WebElement passwordBox = driver.findElement(By.xpath("//*[@data-qa='login-password']"));
 
-        String userMail = "aliaaii@gmail.com";
+        String userMail = "veliiiiii@gmail.com";
         String userPassword = "123456789";
 
         emailBox.sendKeys(userMail);
@@ -65,6 +65,10 @@ public class TC02 {
         //'Hesabı Sil' düğmesini tıklayın
         driver.findElement(By.xpath("//*[@href='/delete_account']")).click();
         Thread.sleep(2000);
+
+        //'HESAP SİLİNDİ!' görünür
+        WebElement deleted = driver.findElement(By.xpath("//*[@class='wrapper']"));
+        Assert.assertTrue(deleted.isDisplayed());
     }
 
 
@@ -79,6 +83,7 @@ public class TC02 {
 
     @After
     public void tearDown() {
+
         driver.close();
     }
 }
