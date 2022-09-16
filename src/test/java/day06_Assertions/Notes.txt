@@ -1,0 +1,15 @@
+
+1 - Maven => build tool,proje yonetim aracidir.
+2 - Maven'in yola cikis amaci proje gelistirmenin kolaylastirilmasi ve birlikte calismanin saglanmasidir.
+3 - Selenium,browser'lari otomasyon yapabilmemiz icin gerekli tool'lari calistiran bir suite'dir.
+4 - Mavem Java projelerin gelistirilmesi icin,ihtiyacimiz olan tum tool'lari projemize eklemek,update etmek,
+versiyonlarini degistirmek gibi islemleri kolayca yapmamizi saglayan bir build tool'dur.
+5 - Maven bu islemleri nasil saglar ?
+    * Maven'in kalbi pom.xml'dir
+    * pom.xml'e ekleyecegimiz dependency'ler ile istedigimiz her kutuphaneyi projemize kolaylikla ekleyebiliri.
+    * projemiz icin kullanmak istedigimiz dependency'leri mvnrepository.com'dan bulabiliri.
+    * ilgili kutuphanenin hangi versiyonunu yuklememiz gereketigine karar vermek icin,en guncel,en cok kullanilan
+    ve stable olan versiyonu buluyoruz.
+6 - Maven framework degildir,sadece framework'u kolayca olusturmamizi saglayan bir tool'dur.
+Biz selenium dersleri boyunca 3 framework ile calisacagiz.
+- JUnit  - TestNG  - Cucumber

@@ -41,6 +41,13 @@ public class C04_InvalidEmail {
         WebElement invalidEmail = driver.findElement(By.xpath("//*[.='Invalid email address.']"));
         Assert.assertTrue(invalidEmail.isDisplayed());
 
+        //System.out.println(invalidEmail.getText());
+        //String actualText = invalidEmail.getText();
+        //String expectedText = "Invalid email address";
+        //Assert.assertTrue(actualText.contains(expectedText));
+        // "Invalid email address." , "Invalid email address"
+        //Assert.assertNotEquals(expectedText,actualText);
+
     }
 
     @Before

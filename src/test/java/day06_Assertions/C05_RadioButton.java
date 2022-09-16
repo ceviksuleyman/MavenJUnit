@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C05_radioButton {
+public class C05_RadioButton {
     /*
     -https://www.facebook.com adresinegidin
     - Cookies’i kabuledin
