@@ -2,12 +2,14 @@ package automation_exercise;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
@@ -33,11 +35,12 @@ public class TC01 {
       18. 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın
        */
 
-    String userName = "veliiii can";  // username degistir
-    String userMail = "veliiii@gmail.com";  // mail degistir
+    String userName = "velii can";  // username degistir
+    String userMail = "veliii1@gmail.com";  // mail degistir
     String firstName = "veli";
     String lastName = "can";
     WebDriver driver;
+    Select select;
 
     @Before
     public void setUp() {
@@ -63,176 +66,145 @@ public class TC01 {
 
         //Ana sayfanın başarılı bir şekilde görünür olduğunu doğrulayın
         WebElement home = driver.findElement(By.xpath("//*[text()=' Home']"));
-        if (home.isDisplayed()) System.out.println("Home Test PASSED");
-        else System.out.println("Home Test FAIL");
+        Assert.assertTrue(home.isDisplayed());
 
 
         //'Kayıt Ol / Giriş Yap' düğmesine tıklayın
-        WebElement signIn = driver.findElement(By.xpath("//*[text()=' Signup / Login']"));
-        signIn.click();
+        driver.findElement(By.xpath("//*[text()=' Signup / Login']")).click();
         Thread.sleep(2000);
 
 
         //'Yeni Kullanıcı Kaydı'nı gorunur oldugunu doğrulayın!
         WebElement newUserSignIn = driver.findElement(By.xpath("//*[text()='New User Signup!']"));
-        if (newUserSignIn.isDisplayed()) System.out.println("New User SignIn Test PASSED");
-        else System.out.println("New User SignIn Test FAIL");
+        Assert.assertTrue(newUserSignIn.isDisplayed());
 
 
         // Adı ve e-posta adresini girin
-        WebElement name = driver.findElement(By.xpath("//*[@data-qa='signup-name']"));
-        name.sendKeys(userName);
+        driver.findElement(By.xpath("//*[@data-qa='signup-name']")).sendKeys(userName);
         Thread.sleep(3000);
 
-        WebElement email = driver.findElement(By.xpath("//*[@data-qa='signup-email']"));
-        email.sendKeys(userMail);
+        driver.findElement(By.xpath("//*[@data-qa='signup-email']")).sendKeys(userMail);
         Thread.sleep(2000);
 
 
         //'Kaydol' düğmesini tıklayın
-        WebElement signUp = driver.findElement(By.xpath("//*[text()='Signup']"));
-        signUp.click();
+        driver.findElement(By.xpath("//*[text()='Signup']")).click();
         Thread.sleep(3000);
 
 
         //'HESAP BİLGİLERİNİ GİRİN' ifadesinin görünür olduğunu doğrulayın
         WebElement enterAccount = driver.findElement(By.xpath("//*[text()='Enter Account Information']"));
-        if (enterAccount.isDisplayed()) System.out.println("Hesap Bilgilerini Gir PASSED");
-        else System.out.println("Hesap Bilgilerini gir FAIL");
+        Assert.assertTrue(enterAccount.isDisplayed());
 
 
         // Doldurma ayrıntıları: Unvan, Ad, E-posta, Şifre, Doğum tarihi
-        WebElement title = driver.findElement(By.xpath("//*[@value='Mr']"));
-        title.click();
+        driver.findElement(By.xpath("//*[@value='Mr']")).click();
         Thread.sleep(2000);
 
+        //password
         String password = "123456789";
-        WebElement passwordYaz = driver.findElement(By.id("password"));
-        passwordYaz.sendKeys(password);
+        driver.findElement(By.id("password")).sendKeys(password);
         Thread.sleep(2000);
 
         //day
         WebElement day = driver.findElement(By.id("days"));
-        day.click();
-        Thread.sleep(2000);
-        WebElement daySelect = driver.findElement(By.xpath("//*[@value='21']"));
-        daySelect.click();
+        select = new Select(day);
+        select.selectByIndex(21);
         Thread.sleep(2000);
 
         //month
         WebElement month = driver.findElement(By.id("months"));
-        month.click();
-        Thread.sleep(2000);
-        WebElement monthSelect = driver.findElement(By.xpath("//*[text()='January']"));
-        monthSelect.click();
+        select = new Select(month);
+        select.selectByIndex(1);
         Thread.sleep(2000);
 
         //year  //*[text()='1993']
         WebElement year = driver.findElement(By.id("years"));
-        year.click();
-        WebElement yearSelect = driver.findElement(By.xpath("//*[text()='1993']"));
-        yearSelect.click();
+        select = new Select(year);
+        select.selectByValue("1993");
         Thread.sleep(2000);
 
         //'Bültenimize kaydolun!' onay kutusunu seçin.
-        WebElement bulten = driver.findElement(By.id("newsletter"));
-        bulten.click();
+        driver.findElement(By.id("newsletter")).click();
         Thread.sleep(2000);
 
         //'Ortaklarımızdan özel teklifler alın!' onay kutusunu seçin.
-        WebElement ortaklar = driver.findElement(By.id("optin"));
-        ortaklar.click();
+        driver.findElement(By.id("optin")).click();
         Thread.sleep(2000);
-
 
 
         // Doldurma ayrıntıları: Ad, Soyadı, Şirket, Adres, Adres2, Ülke, Eyalet, Şehir, Posta Kodu, Cep Numarası
 
         //name
-        WebElement firstNameGir = driver.findElement(By.id("first_name"));
-        firstNameGir.sendKeys(firstName);
+        driver.findElement(By.id("first_name")).sendKeys(firstName);
         Thread.sleep(2000);
 
         //lastname
-        WebElement lastNameGir = driver.findElement(By.id("last_name"));
-        lastNameGir.sendKeys(lastName);
+        driver.findElement(By.id("last_name")).sendKeys(lastName);
         Thread.sleep(2000);
 
         //company
         String company = "TechProEd";
-        WebElement companyGir = driver.findElement(By.id("company"));
-        companyGir.sendKeys(company);
+        driver.findElement(By.id("company")).sendKeys(company);
         Thread.sleep(2000);
 
         //adress1
         String address1 = "Turkiye";
-        WebElement address1Gir = driver.findElement(By.id("address1"));
-        address1Gir.sendKeys(address1);
+        driver.findElement(By.id("address1")).sendKeys(address1);
         Thread.sleep(2000);
 
         //adress2
         String address2 = "Singapur";
-        WebElement address2Gir = driver.findElement(By.id("address2"));
-        address2Gir.sendKeys(address2);
+        driver.findElement(By.id("address2")).sendKeys(address2);
         Thread.sleep(2000);
 
         //Country //*[text()='Singapore']
         WebElement countries = driver.findElement(By.id("country"));
-        countries.click();
-        WebElement countrySec = driver.findElement(By.xpath("//*[text()='Singapore']"));
-        countrySec.click();
+        select = new Select(countries);
+        select.selectByIndex(6);
         Thread.sleep(2000);
 
         //state
         String state = "Singapur";
-        WebElement stateGir = driver.findElement(By.id("state"));
-        stateGir.sendKeys(state);
+        driver.findElement(By.id("state")).sendKeys(state);
         Thread.sleep(2000);
 
         //city
         String city = "Maldiv";
-        WebElement cityGir = driver.findElement(By.id("city"));
-        cityGir.sendKeys(city);
+        driver.findElement(By.id("city")).sendKeys(city);
         Thread.sleep(2000);
 
         //zipCode
         String zipCode = "64";
-        WebElement zipCodeGir = driver.findElement(By.id("zipcode"));
-        zipCodeGir.sendKeys(zipCode);
+        driver.findElement(By.id("zipcode")).sendKeys(zipCode);
         Thread.sleep(2000);
+
 
         //mobil
         String mobile = "03453233443";
-        WebElement mobilGir = driver.findElement(By.id("mobile_number"));
-        mobilGir.sendKeys(mobile);
+        driver.findElement(By.id("mobile_number")).sendKeys(mobile);
         Thread.sleep(2000);
 
 
         //'Hesap Oluştur düğmesini' tıklayın    //*[text()='Create Account']
-        WebElement createAccount = driver.findElement(By.xpath("//*[text()='Create Account']"));
-        createAccount.click();
+        driver.findElement(By.xpath("//*[text()='Create Account']")).click();
 
 
         //'HESAP OLUŞTURULDU!' görünür    //*[text()='Account Created!']
         WebElement created = driver.findElement(By.xpath("//*[text()='Account Created!']"));
-        if (created.isDisplayed()) System.out.println("Hesap Olusturuldu Test PASSED");
-        else System.out.println("Hesap Olusturuldu Test FAIL");
-
-
+        Assert.assertTrue(created.isDisplayed());
         Thread.sleep(2000);
+
+
         //'Devam' düğmesini tıklayın  //*[text()='Continue']
-        WebElement contine = driver.findElement(By.xpath("//*[text()='Continue']"));
-        contine.click();
+        driver.findElement(By.xpath("//*[text()='Continue']")).click();
         Thread.sleep(3000);
 
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
-        String expectedLoggedIn = driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText();
-        System.out.println(expectedLoggedIn);
         WebElement expextedLog = driver.findElement(By.xpath("//*[text()=' Logged in as ']"));
-        if (expextedLog.isDisplayed()) System.out.println(userName + " Kullanici adi olarak oturum acildi PASSED");
-        else System.out.println(userName + " Kullanici adi olarak oturum acildi FAIL");
-
+        System.out.println(driver.findElement(By.xpath("//*[text()=' Logged in as ']")).getText());
+        Assert.assertTrue(expextedLog.isDisplayed());
 
 
         //System.out.println(expectedLoggedIn);
