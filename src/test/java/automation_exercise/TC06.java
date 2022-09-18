@@ -65,16 +65,19 @@ public class TC06 {
         Thread.sleep(1000);
         driver.findElement(By.xpath("//*[@data-qa='subject']")).sendKeys("TEST");
         Thread.sleep(1000);
-        driver.findElement(By.xpath("//*[@data-qa='message']")).sendKeys("Hayat dedigin bir cift bacak,gidebildigi  yol kadar");
+        driver.findElement(By.xpath("//*[@data-qa='message']")).sendKeys("Hayat dedigin bir cift bacak ve gidebildigi  yol kadar");
         Thread.sleep(1000);
+
 
         // Dosya yükle
         driver.findElement(By.xpath("//*[@name='upload_file']")).
                 sendKeys("C:\\Users\\User\\IdeaProjects\\com.JUnit\\src\\test\\java\\automation_exercise\\redCar.png");
 
+
         //'Gönder' düğmesini tıklayın
         driver.findElement(By.xpath("//*[@data-qa='submit-button']")).click();
         Thread.sleep(1000);
+
 
         //Tamam düğmesine tıklayın
         driver.switchTo().alert().accept();
@@ -85,6 +88,7 @@ public class TC06 {
         System.out.println("success massage -> " + success.getText());
         Assert.assertTrue(success.isDisplayed());
         Thread.sleep(2000);
+
 
         //'Ana Sayfa' düğmesini tıklayın ve ana sayfaya başarıyla indiğini doğrulayın
         driver.findElement(By.xpath("//*[text()=' Home']")).click();
