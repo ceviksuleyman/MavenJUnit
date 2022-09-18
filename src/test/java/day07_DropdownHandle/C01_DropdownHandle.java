@@ -46,7 +46,7 @@ public class C01_DropdownHandle {
 
         // Kategori menusunden Books secenegini secin
         WebElement ddm = driver.findElement(By.xpath("//*[@id='searchDropdownBox']"));
-        ddm.sendKeys("Books");
+        ddm.sendKeys("Books");  // dropdown menuden Select objesi kullanmadan bu sekilde de locate edilebilir.
         Thread.sleep(2000);
 
 
