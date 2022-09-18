@@ -50,6 +50,7 @@ public class C03_BasicAuthentication {
 
     @After
     public void tearDown() {
+
         driver.close();
     }
 }

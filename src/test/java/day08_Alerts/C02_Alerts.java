@@ -1,10 +1,7 @@
 package day08_Alerts;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,15 +23,16 @@ public class C02_Alerts {
     butona tıklayın, uyarıdaki metin kutusuna isminizi yazin, OK butonuna tıklayın ve result mesajında
     isminizin görüntülendiğini doğrulayın.
      */
-    WebDriver driver;
+    static WebDriver driver;
 
 
-    @Before
-    public void setUp() {
+    @BeforeClass
+    public static void setUp() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
+        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
     }
 
 
@@ -50,16 +48,16 @@ public class C02_Alerts {
          Ok(Tamam) veya istenilen neyse secerek kapatilir
          */
 
-        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         driver.findElement(By.xpath("//*[text()='Click for JS Alert']")).click();
         Thread.sleep(3000);
         driver.switchTo().alert().accept();
 
         WebElement message = driver.findElement(By.xpath("//*[@id='result']"));
         String actualMessage = message.getText();
-        System.out.println("Result message -> " + actualMessage);
+        System.out.println("1. button Result message -> " + actualMessage);
         String expectedMessage = "You successfully clicked an alert";
         Assert.assertEquals(expectedMessage, actualMessage);
+        System.out.println("----");
     }
 
 
@@ -75,9 +73,8 @@ public class C02_Alerts {
          onaylanmiyorsa Cancel butonuna basilir.
          */
 
-        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         driver.findElement(By.xpath("//*[@onclick='jsConfirm()']")).click();
-        System.out.println("2. kutu JS Confirm alert message -> " + driver.switchTo().alert().getText());
+        System.out.println("2. button JS Confirm alert message -> " + driver.switchTo().alert().getText());
         Thread.sleep(2000);
         driver.switchTo().alert().dismiss();
 
@@ -87,6 +84,7 @@ public class C02_Alerts {
         System.out.println("Result message -> " + actualMessage);
         String unexpectedMess = "successfuly";
         Assert.assertFalse(actualMessage.contains(unexpectedMess));
+        System.out.println("----");
     }
 
 
@@ -102,10 +100,9 @@ public class C02_Alerts {
         selenium webdriver metni sendkeys ("input....") kullanarak girebilir.
         */
 
-        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
         driver.findElement(By.xpath("//*[@onclick='jsPrompt()']")).click();
         Thread.sleep(3000);
-        System.out.println("3. kutu JS prompt Alert mesaj -> " + driver.switchTo().alert().getText());
+        System.out.println("3. button JS prompt Alert mesaj -> " + driver.switchTo().alert().getText());
         driver.switchTo().alert().sendKeys("cevik");
         Thread.sleep(3000);
         driver.switchTo().alert().accept();
@@ -116,10 +113,11 @@ public class C02_Alerts {
         System.out.println("Result JS prompt -> " + actualResult);
         String expectedResult = "cevik";
         Assert.assertTrue(actualResult.contains(expectedResult));
+        System.out.println("----");
     }
 
-    @After
-    public void tearDown() {
+    @AfterClass
+    public static void tearDown() {
         driver.close();
     }
 

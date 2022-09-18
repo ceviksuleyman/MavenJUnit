@@ -60,6 +60,7 @@ public class C03_Dropdown {
         // Visible Text(Görünen metin) kullanarak Seçenek 1’i (Option 1) seçin ve yazdırın
         select.selectByVisibleText("Option 1");
         System.out.println(select.getFirstSelectedOption().getText());
+        System.out.println("----");
 
 
         //Tüm dropdown değerleri(value) yazdırın
@@ -67,6 +68,7 @@ public class C03_Dropdown {
         for (WebElement w : drops) {
             System.out.println(w.getText());
         }
+        System.out.println("----");
 
 
         //Dropdown’un boyutunu bulun, Dropdown’da 4 öğe varsa konsolda True , degilse False yazdırın.
