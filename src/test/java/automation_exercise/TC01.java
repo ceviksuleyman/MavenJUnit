@@ -198,7 +198,7 @@ public class TC01 {
 
         //'Devam' düğmesini tıklayın  //*[text()='Continue']
         driver.findElement(By.xpath("//*[text()='Continue']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
 
         //'Kullanıcı adı olarak oturum açıldı' ifadesinin görünür olduğunu doğrulayın
@@ -216,7 +216,7 @@ public class TC01 {
 
         // 'Hesabı Sil' düğmesini tıklayın
         driver.findElement(By.xpath("//*[.=' Delete Account']")).click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
 
         // 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın TODO
