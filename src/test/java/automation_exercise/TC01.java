@@ -36,7 +36,7 @@ public class TC01 {
        */
 
     String userName = "velii can";  // username degistir
-    String userMail = "veliii1@gmail.com";  // mail degistir
+    String userMail = "veliii2@gmail.com";  // mail degistir
     String firstName = "veli";
     String lastName = "can";
     WebDriver driver;
@@ -207,19 +207,14 @@ public class TC01 {
         Assert.assertTrue(expextedLog.isDisplayed());
 
 
-        //System.out.println(expectedLoggedIn);
-        //String[] logged = expectedLoggedIn.split(" ");
-        //String isimsoyisim = logged[3] + " " + logged[4];
-        //if (isimsoyisim.equals(userName)) System.out.println(userName + " Kullanici adiyla oturum acildi PASS");
-        //else System.out.println(userName + " Kullanici adiyla oturum acildi FAIL");
-
-
         // 'Hesabı Sil' düğmesini tıklayın
         driver.findElement(By.xpath("//*[.=' Delete Account']")).click();
         Thread.sleep(2000);
 
 
         // 'HESAP SİLİNDİ!' görünür ve 'Devam' düğmesini tıklayın TODO
+        WebElement deleted = driver.findElement(By.xpath("//*[@class='wrapper']"));
+        Assert.assertTrue(deleted.isDisplayed());
 
     }
 }
