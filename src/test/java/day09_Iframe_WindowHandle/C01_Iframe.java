@@ -1,4 +1,4 @@
-package day08_Alerts;
+package day09_Iframe_WindowHandle;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
@@ -10,8 +10,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
-public class C04_Iframe {
+public class C01_Iframe {
     /*
     IFrame => Bir web sayfasina yerlestirilmis baska bir web sayfasidir  veya bir HTML dokumanin
     icine yerlestirilmis baska bir HTML dokumanidir.
@@ -22,15 +24,24 @@ public class C04_Iframe {
     WebDriver driver;
 
     @Test
-    public void test01() {
+    public void test01() throws InterruptedException {
         // https://html.com/tags/iframe/ git
         driver.get("https://html.com/tags/iframe/");
 
         //Youtube videosunu calistirin
-        WebElement ytFrame = driver.findElement(By.xpath("//*[@src='https://www.youtube.com/embed/owsfdh4gxyc']"));
-        driver.switchTo().frame(ytFrame);
+        List<WebElement> iframeList = new ArrayList<>(driver.findElements(By.xpath("//iframe")));
+        driver.switchTo().frame(iframeList.get(0));
         WebElement play = driver.findElement(By.xpath("//*[@aria-label='Oynat']"));
         play.click();
+        Thread.sleep(3000);
+
+        /*
+        Bir web sitesinde bir video(youtube vb.) varsa ve <iframe> tag'i icerisindeyse bu video'yu direkt
+        locate edip calistirmak dinamik olmaz cunku link degisebilir ve locate'i calismaz.
+        Bunun icin butun frame'leri bir ArrayList'e atip index ile frame' i secip sonrasinda play tusunu
+        locate edip calistirabiliriz.
+         */
+
     }
 
 
@@ -44,6 +55,7 @@ public class C04_Iframe {
 
     @After
     public void tearDown() {
+
         driver.close();
     }
 }
