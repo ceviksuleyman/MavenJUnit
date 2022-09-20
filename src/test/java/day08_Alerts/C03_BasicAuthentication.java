@@ -27,6 +27,8 @@ public class C03_BasicAuthentication {
      NOTE => Authentication Nedir ?
      herhangi bir internet kullanicisinin, uygulamanin ya da  programin, soz konusu sisteme dahil olup olamayacagini
      belirleyen  formu ifade eder.
+
+     https://admin:admin@the-internet.herokuapp.com/basic_auth
      */
 
     @Before
