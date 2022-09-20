@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class C05_WindowHandle {
     /*
@@ -46,6 +47,17 @@ public class C05_WindowHandle {
         driver.findElement(By.xpath("//*[@target='_blank']")).click();
         List<String> windowList = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windowList.get(1));
+
+
+        /*
+        Set<String> windowHandleSet = driver.getWindowHandles();
+        System.out.println(windowHandleSet);
+        String ikinciSayfaHandleDeger = "";
+        for (String w : windowHandleSet) {
+
+            if (!w.equals(ikinciSayfaHandleDeger)) ikinciSayfaHandleDeger = w;
+        }
+        */
 
 
         // Acilan yeni pencerenin sayfa başlığının (title) “New Window” oldugunu dogrulayin.
