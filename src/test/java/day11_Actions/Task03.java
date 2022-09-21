@@ -62,6 +62,8 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
     @Test
     public void test02() {
 
+        driver.get("https://www.amazon.com");
+
         //dropdown menuden elektronik bölümü seçin
         WebElement ddm = driver.findElement(By.cssSelector("#searchDropdownBox"));
         ddm.sendKeys("Electronics");
@@ -80,10 +82,12 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
         ikinciUrun.click();
 
         //ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
-
-
-
+        String fiyat = driver.findElement(By.cssSelector("#price_inside_buybox")).getText();
+        System.out.println("Urun Fiyat -> " + fiyat);
+        String urunTitle = driver.findElement(By.cssSelector("#productTitle")).getText();
+        System.out.println("Urun Title -> " + urunTitle);
     }
+
     @Test
     public void test03() {
         // yeni bir sekme açarak amazon anasayfaya gidin
@@ -103,7 +107,6 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
         // sonuç yazsının "stroller" içerdiğini test edin
         String sonucYazi = driver.findElement(By.xpath("(//*[@class='a-section a-spacing-small a-spacing-top-small'])[1]")).getText();
         Assert.assertTrue(sonucYazi.contains("stroller"));
-
 
 
         // üçüncü ürüne relative locater kullanarak tıklayin

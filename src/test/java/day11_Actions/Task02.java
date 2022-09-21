@@ -1,5 +1,6 @@
 package day11_Actions;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -28,7 +29,8 @@ public class Task02 extends TestBaseBeforeClassAfterClass {
         //videoyu izlemek icin Play tusuna basin
         WebElement frame = driver.findElement(By.tagName("iframe"));
         driver.switchTo().frame(frame);
-        driver.findElement(By.xpath("//*[@aria-label='Oynat']")).click();
+        WebElement play = driver.findElement(By.xpath("//*[@aria-label='Oynat']"));
+        play.click();
 
         driver.switchTo().defaultContent();
 
