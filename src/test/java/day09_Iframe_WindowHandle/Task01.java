@@ -10,6 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Task01 {
@@ -48,6 +49,9 @@ public class Task01 {
         driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@id='a077aa5e']")));
         driver.findElement(By.xpath("//*[@src='Jmeter720.png']")).click();
         Thread.sleep(2000);
+
+        List<String> windowList = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windowList.get(1));
 
     }
 
