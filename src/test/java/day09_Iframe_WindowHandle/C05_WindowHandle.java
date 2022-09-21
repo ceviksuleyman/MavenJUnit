@@ -47,6 +47,13 @@ public class C05_WindowHandle {
         driver.findElement(By.xpath("//*[@target='_blank']")).click();
         List<String> windowList = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windowList.get(1));
+        /*
+        Bir web sitesine gittignizde bir webelementi tikladiginizda yeni bir sekme ya da pencere acilirsa
+        bu yeni acilan sekmenin handle degerini bulabilmek icin driver.getWindowHandles() method'unu bir
+        ArrayList'e atip buyun sayfalarin listesine ulasabilirim.
+        Ilk actigim sayfanin index'i 0'dir,ikinci acilan sayfanin index'i 1'dir. Ve ikinci acilan pencerede
+        ya da sekmede islem yapabilmek icin driver.switchTo().window(listAdi.get(index)) method'unu kullaniriz.
+         */
 
 
         /*
