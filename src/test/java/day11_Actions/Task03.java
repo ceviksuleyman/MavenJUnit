@@ -36,7 +36,7 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
       5 - üçüncü ürüne relative locater kullanarak tıklayin
       6 - title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin
 
-      Test4
+      Test04
       1-sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
      */
 
@@ -66,7 +66,7 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
     @Test
     public void test02() {
 
-        driver.get("https://www.amazon.com");
+        driver.get("https://www.amazon.com.tr");
 
         //1 - dropdown menuden elektronik bölümü seçin
         WebElement ddm = driver.findElement(By.cssSelector("#searchDropdownBox"));
@@ -85,7 +85,7 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
 
         //4 - ikinci ürüne relative locater kullanarak tıklayin
         WebElement ilkUrun = driver.findElement(By.xpath("(//*[@class='a-size-base-plus a-color-base a-text-normal'])[1]"));
-        WebElement ikinciUrun = driver.findElement(RelativeLocator.with(By.tagName("span")).toRightOf(ilkUrun));
+        WebElement ikinciUrun = driver.findElement(RelativeLocator.with(By.tagName("div")).toRightOf(ilkUrun));
         ikinciUrun.click();
 
 

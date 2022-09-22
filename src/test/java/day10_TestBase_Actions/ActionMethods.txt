@@ -1,14 +1,18 @@
 
 
-    ➢ doubleClick(): WebElement’e çift tıklama yapar
+    ➢ Mouse Actions
+    ■ doubleClick(): WebElement’e çift tıklama yapar
+    ■ clickAndHold(): WebElement uzerinde click yapili  olarak bizden komut bekler.
+    ■ dragAndDrop(): WebElement’i bir noktadan diğerine sürükler ve bırakır
+    ■ moveToElement(): Mouse’u istedigimiz WebElement’in uzerinde tutar
+    ■ contextClick(): Mouse ile istedigimiz WebElement’e sag tiklama yapar.
 
-    ➢ clickAndHold(): WebElement uzerinde click yapili  olarak bizden komut bekler.
 
-    ➢ dragAndDrop(): WebElement’i bir noktadan diğerine sürükler ve bırakır
-
-    ➢ moveToElement(): Mouse’u istedigimiz WebElement’in uzerinde tutar
-
-    ➢ contextClick(): Mouse ile istedigimiz WebElement’e sag tiklama yapar.
+    ➢ Action Class’indan kullanacagimiz method’larile klavyedeki tuslari kontrol edebiliriz.
+    ➢ Bunun icin 3 method kullaniriz.
+    ■ sendKeys() : Öğeye bir dizi anahtar gönderir
+    ■ keyDown() : Klavyede tuşa basma işlemi gerçekleştirir
+    ■ keyUp() : Klavyede tuşu serbest bırakma işlemi gerçekleştirir
 
 
 

@@ -26,14 +26,11 @@ public class Task02 extends TestBaseBeforeClassAfterClass {
         actions.sendKeys(Keys.PAGE_DOWN).perform();
 
         //videoyu izlemek icin Play tusuna basin
-        WebElement frame = driver.findElement(By.tagName("iframe"));
+        WebElement frame = driver.findElement(By.xpath("//iframe[@src='https://www.youtube.com/embed/owsfdh4gxyc']"));
         driver.switchTo().frame(frame);
         WebElement play = driver.findElement(By.xpath("//*[@aria-label='Oynat']"));
         play.click();
 
-        driver.switchTo().defaultContent();
-
         //videoyu calistirdiginizi test edin
-
     }
 }

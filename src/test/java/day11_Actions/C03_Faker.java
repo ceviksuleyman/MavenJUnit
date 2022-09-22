@@ -46,12 +46,12 @@ public class C03_Faker extends TestBaseBeforeAfter {
 
         WebElement name = driver.findElement(By.xpath("//*[@name='firstname']"));
 
-        String email = faker.internet().emailAddress(); //ayni maili vermesi icin atadik
+        String fakeEmail = faker.internet().emailAddress(); //ayni maili vermesi icin atadik
 
         actions.click(name).sendKeys(faker.name().firstName()).
                 sendKeys(Keys.TAB).sendKeys(faker.name().lastName()).
-                sendKeys(Keys.TAB).sendKeys(email).
-                sendKeys(Keys.TAB).sendKeys(email).
+                sendKeys(Keys.TAB).sendKeys(fakeEmail).
+                sendKeys(Keys.TAB).sendKeys(fakeEmail).
                 sendKeys(Keys.TAB).sendKeys(faker.internet().password()).
                 sendKeys(Keys.TAB).
                 sendKeys(Keys.TAB).sendKeys("21").
@@ -67,6 +67,7 @@ public class C03_Faker extends TestBaseBeforeAfter {
                 perform();
 
 
-        //driver.quit();
+        Thread.sleep(4000);
+        driver.quit();
     }
 }
