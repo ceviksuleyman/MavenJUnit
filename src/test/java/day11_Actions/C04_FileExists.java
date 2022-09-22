@@ -8,6 +8,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class C04_FileExists {
+    /*
+    ● Selenium ile windows uygulamalarını test edemiyoruz. Ama test etmek için JAVA kullanabiliriz.
+    ● Bilgisayarımızda bir dosya olupolmadığını(exist)  kontrol etmek için Java'yı kullanabiliriz
+      ○ System.getProperty ( "user.dir"); icindebulunulanklasörün yolunu (Path) verir
+      ○ System.getProperty ( "user.home");  bilgisayarimizda bulunan user klasörünü verir
+      ○ Files.exists (Paths.get (filePath)); Bilgisayarınızda  dosyanın olup olmadığını kontrol eder
+    ● İndirilen bir dosyanın indirme klasörümüzde olup olmadığını kontrol etmek için bu Java konseptini kullanabiliriz
+     */
 
     @Test
     public void test01() {

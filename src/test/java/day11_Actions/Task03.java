@@ -10,6 +10,7 @@ import org.openqa.selenium.support.locators.RelativeLocator;
 import org.openqa.selenium.support.ui.Select;
 import utilities.TestBaseBeforeClassAfterClass;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Task03 extends TestBaseBeforeClassAfterClass {
@@ -71,18 +72,22 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
         WebElement ddm = driver.findElement(By.cssSelector("#searchDropdownBox"));
         ddm.sendKeys("Electronics");
 
+
         //2 - arama kutusuna iphone yazip aratin ve bulunan sonuç sayısını yazdırın
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("iphone", Keys.ENTER);
         String aramaSonucu = driver.findElement(By.xpath("(//*[@class='sg-col-inner'])[1]")).getText();
         System.out.println("iphone arama sonucu -> " + aramaSonucu);
 
+
         //3 - sonuc sayisi bildiren yazinin iphone icerdigini test edin
         Assert.assertTrue(aramaSonucu.contains("iphone"));
+
 
         //4 - ikinci ürüne relative locater kullanarak tıklayin
         WebElement ilkUrun = driver.findElement(By.xpath("(//*[@class='a-size-base-plus a-color-base a-text-normal'])[1]"));
         WebElement ikinciUrun = driver.findElement(RelativeLocator.with(By.tagName("span")).toRightOf(ilkUrun));
         ikinciUrun.click();
+
 
         //5 - ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
         String fiyat = driver.findElement(By.cssSelector("#price_inside_buybox")).getText();
@@ -104,6 +109,7 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
         select = new Select(ddm);
         select.selectByIndex(3);
 
+
         //3 - bebek puset aratıp bulundan sonuç sayısını yazdırın
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("baby stroller", Keys.ENTER);
 
@@ -120,9 +126,24 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
 
 
         //6 - title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin
+        String urunFiyat = driver.findElement(By.xpath("(//*[@class='a-price aok-align-center'])[1]")).getText();
+        System.out.println("Bebek puset fiyat -> " + urunFiyat);
+        String urunTitle = driver.findElement(By.cssSelector("#productTitle")).getText();
+        System.out.println("Bebek puset Urun Title -> " + urunTitle);
+
+        driver.findElement(By.cssSelector("#add-to-cart-button")).click(); // sepete ekle
 
 
         //Test4
         //1-sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
+
+        driver.findElement(By.cssSelector("#nav-cart")).click();  //sepete git
+        String sepetFiyat = driver.findElement(By.xpath("//*[@class='a-size-medium a-color-base sc-price sc-white-space-nowrap sc-product-price a-text-bold']")).getText();
+        String sepetUrunTitle = driver.findElement(By.xpath("//*[@class='a-truncate-full a-offscreen']")).getText();
+        System.out.println("sepetteki urun fiyati -> " + sepetFiyat);
+        System.out.println("sepetteki urun ismi -> " + sepetUrunTitle);
+
+        Assert.assertEquals(urunFiyat, sepetFiyat);
+        Assert.assertEquals(urunTitle, sepetUrunTitle);
     }
 }

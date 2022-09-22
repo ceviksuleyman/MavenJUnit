@@ -26,7 +26,7 @@ public class C05_FileExists extends TestBaseBeforeAfter {
 
 
         //methodunda dosyanın başarıyla indirilip indirilmediğini test edelim
-        String dosyaYolu = "C:\\Users\\cevik\\Downloads\\test.txt";
+        String dosyaYolu = "C:\\Users\\User\\Downloads\\test.txt";
         Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
 
