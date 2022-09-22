@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
 
@@ -14,6 +15,7 @@ public abstract class TestBaseBeforeAfter {
 
     protected WebDriver driver;
     protected Actions actions;
+    protected Select select;
 
     @Before
     public void setUp() {
