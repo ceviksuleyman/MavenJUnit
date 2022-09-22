@@ -10,11 +10,10 @@ import utilities.TestBaseBeforeClassAfterClass;
 public class Task02 extends TestBaseBeforeClassAfterClass {
 
    /*
-
-    https://html.com/tags/iframe/ sayfasina gidelim
-    video’yu gorecek kadar asagi inin
-    videoyu izlemek icin Play tusuna basin
-    videoyu calistirdiginizi test edin
+    => https://html.com/tags/iframe/ sayfasina gidelim
+    => video’yu gorecek kadar asagi inin
+    => videoyu izlemek icin Play tusuna basin
+    => videoyu calistirdiginizi test edin
      */
 
     @Test

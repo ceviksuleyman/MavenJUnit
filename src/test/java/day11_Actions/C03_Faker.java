@@ -8,17 +8,19 @@ import org.openqa.selenium.WebElement;
 import utilities.TestBaseBeforeAfter;
 
 public class C03_Faker extends TestBaseBeforeAfter {
-    // “firstName” giris kutusuna bir isim yazin
-    // “surname” giris kutusuna bir soyisim yazin
-    // “email” giris kutusuna bir email yazin
-    // “email” onay kutusuna emaili tekrar yazin
-    // Bir sifre girin
-    // Tarih icin gun secin
-    // Tarih icin ay secin
-    // Tarih icin yil secin
-    // Cinsiyeti secin
-    // Kaydol butonuna basın
-    // Sayfayi kapatin
+    /*
+    => “firstName” giris kutusuna bir isim yazin
+    => “surname” giris kutusuna bir soyisim yazin
+    => “email” giris kutusuna bir email yazin
+    => “email” onay kutusuna emaili tekrar yazin
+    => Bir sifre girin
+    => Tarih icin gun secin
+    => Tarih icin ay secin
+    => Tarih icin yil secin
+    => Cinsiyeti secin
+    => Kaydol butonuna basın
+    => Sayfayi kapatin
+     */
     @Test
     public void test01() throws InterruptedException {
 

@@ -16,22 +16,26 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
 
       /*
       Test01
-      -  amazon gidin
-      Arama kutusunun solundaki dropdown menuyu handle edip listesini ekrana yazdırın
-      dropdown menude 40 eleman olduğunu doğrulayın
+      1 - amazongidin
+      2 - Arama kutusunun solundaki dropdown menuyu handle edip listesini ekrana yazdırın
+      3 - dropdown menude 40 eleman olduğunu doğrulayın
+
       Test02
-      dropdown menuden elektronik bölümü seçin
-      arama kutusuna iphone yazip aratin ve bulunan sonuç sayısını yazdırın
-      sonuc sayisi bildiren yazinin iphone icerdigini test edin
-      ikinci ürüne relative locater kullanarak tıklayin
-      ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
+      1 - dropdown menuden elektronik bölümü seçin
+      2 - arama kutusuna iphone yazip aratin ve bulunan sonuç sayısını yazdırın
+      3 - sonuc sayisi bildiren yazinin iphone icerdigini test edin
+      4 - ikinci ürüne relative locater kullanarak tıklayin
+      5 - ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
+
       Test03
-      yeni bir sekme açarak amazon anasayfaya gidin
-      dropdown’dan bebek bölümüne secin
-      bebek puset aratıp bulundan sonuç sayısını yazdırın
-      sonuç yazsının puset içerdiğini test edin
-      5-üçüncü ürüne relative locater kullanarak tıklayin
-      6-title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin  Test 4
+      1 - yeni bir sekme açarak amazon anasayfaya gidin
+      2 - dropdown’dan bebek bölümüne secin
+      3 - bebek puset aratıp bulunan sonuç sayısını yazdırın
+      4 - sonuç yazsının puset içerdiğini test edin
+      5 - üçüncü ürüne relative locater kullanarak tıklayin
+      6 - title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin
+
+      Test4
       1-sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
      */
 
@@ -58,30 +62,29 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
 
     }
 
-
     @Test
     public void test02() {
 
         driver.get("https://www.amazon.com");
 
-        //dropdown menuden elektronik bölümü seçin
+        //1 - dropdown menuden elektronik bölümü seçin
         WebElement ddm = driver.findElement(By.cssSelector("#searchDropdownBox"));
         ddm.sendKeys("Electronics");
 
-        //arama kutusuna iphone yazip aratin ve bulunan sonuç sayısını yazdırın
+        //2 - arama kutusuna iphone yazip aratin ve bulunan sonuç sayısını yazdırın
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("iphone", Keys.ENTER);
         String aramaSonucu = driver.findElement(By.xpath("(//*[@class='sg-col-inner'])[1]")).getText();
         System.out.println("iphone arama sonucu -> " + aramaSonucu);
 
-        //sonuc sayisi bildiren yazinin iphone icerdigini test edin
+        //3 - sonuc sayisi bildiren yazinin iphone icerdigini test edin
         Assert.assertTrue(aramaSonucu.contains("iphone"));
 
-        //ikinci ürüne relative locater kullanarak tıklayin
+        //4 - ikinci ürüne relative locater kullanarak tıklayin
         WebElement ilkUrun = driver.findElement(By.xpath("(//*[@class='a-size-base-plus a-color-base a-text-normal'])[1]"));
         WebElement ikinciUrun = driver.findElement(RelativeLocator.with(By.tagName("span")).toRightOf(ilkUrun));
         ikinciUrun.click();
 
-        //ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
+        //5 - ürünün title'ni ve fiyatını variable’a  assign edip ürünü sepete ekleyelim
         String fiyat = driver.findElement(By.cssSelector("#price_inside_buybox")).getText();
         System.out.println("Urun Fiyat -> " + fiyat);
         String urunTitle = driver.findElement(By.cssSelector("#productTitle")).getText();
@@ -90,33 +93,36 @@ public class Task03 extends TestBaseBeforeClassAfterClass {
 
     @Test
     public void test03() {
-        // yeni bir sekme açarak amazon anasayfaya gidin
+
+        //1 - yeni bir sekme açarak amazon anasayfaya gidin
         driver.switchTo().newWindow(WindowType.TAB);
         driver.get("https://www.amazon.com");
 
 
-        // dropdown’dan bebek bölümüne secin
+        //2 - dropdown’dan bebek bölümüne secin
         WebElement ddm = driver.findElement(By.cssSelector("#searchDropdownBox"));
         select = new Select(ddm);
         select.selectByIndex(3);
 
-        // bebek puset aratıp bulundan sonuç sayısını yazdırın
+        //3 - bebek puset aratıp bulundan sonuç sayısını yazdırın
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("baby stroller", Keys.ENTER);
 
 
-        // sonuç yazsının "stroller" içerdiğini test edin
+        //4 - sonuç yazsının "stroller" içerdiğini test edin
         String sonucYazi = driver.findElement(By.xpath("(//*[@class='a-section a-spacing-small a-spacing-top-small'])[1]")).getText();
         Assert.assertTrue(sonucYazi.contains("stroller"));
 
 
-        // üçüncü ürüne relative locater kullanarak tıklayin
+        //5 - üçüncü ürüne relative locater kullanarak tıklayin
         WebElement ikinciUrun = driver.findElement(By.xpath("(//*[@class='s-image'])[2]"));
         WebElement ucuncuUrun = driver.findElement(RelativeLocator.with(By.tagName("img")).below(ikinciUrun));
         ucuncuUrun.click();
 
 
-        // title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin
+        //6 - title ve fiyat bilgilerini assign edelim ve ürünü sepete ekleyin
 
-        // sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
+
+        //Test4
+        //1-sepetteki ürünlerle eklediğimiz ürünlerin aynı olduğunu isim ve fiyat olarak doğrulayın
     }
 }

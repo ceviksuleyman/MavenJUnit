@@ -34,5 +34,13 @@ public class C01_KeyUpKeyDown extends TestBaseBeforeAfter {
         // aramanin gerceklestigini test edin
         Assert.assertTrue(driver.findElement(By.xpath("//*[@class='sg-col-inner']")).isDisplayed());
 
+        /*
+        ➢ Action Class’indan kullanacagimiz method’larileklavyedeki tuslari kontrol edebiliriz.
+        ➢ Bunun icin 3 method kullaniriz.
+          ■ sendKeys() : Öğeye bir dizi anahtar gönderir
+          ■ keyDown() : Klavyede tuşa basma işlemi gerçekleştirir
+          ■ keyUp() : Klavyede tuşu serbest bırakma işlemi gerçekleştirir
+         */
+
     }
 }
