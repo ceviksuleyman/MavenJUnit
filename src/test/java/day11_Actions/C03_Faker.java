@@ -41,8 +41,11 @@ public class C03_Faker extends TestBaseBeforeAfter {
          */
 
         Faker faker = new Faker();
+
         WebElement name = driver.findElement(By.xpath("//*[@name='firstname']"));
+
         String email = faker.internet().emailAddress(); //ayni maili vermesi icin atadik
+
         actions.click(name).sendKeys(faker.name().firstName()).
                 sendKeys(Keys.TAB).sendKeys(faker.name().lastName()).
                 sendKeys(Keys.TAB).sendKeys(email).
