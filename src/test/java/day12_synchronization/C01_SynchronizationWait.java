@@ -66,6 +66,11 @@ public class C01_SynchronizationWait extends TestBaseBeforeAfter {
 
         //"It's gone!" mesajinin goruntulendigini dogrulayin.
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        /*
+        Yazinin gorunur olmasini beklerken yazinin locate'ini kullanmak sorun olusturur.
+        Cunku henuz gorunmeyen bir yazinin locate edilmesi de mumkun olmayabilir. html kodlarinin durumuna gore degisebilir.
+        Bu durumda bekleme islemi ve locate'i birlikte yapmaliyiz.
+         */
         WebElement itsGoneWE = wait.
                 until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("*[id='message']")));
         Assert.assertTrue(itsGoneWE.isDisplayed());

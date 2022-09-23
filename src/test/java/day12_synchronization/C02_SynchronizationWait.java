@@ -21,7 +21,7 @@ public class C02_SynchronizationWait extends TestBaseBeforeAfter {
      */
 
     @Test
-    public void isEnabled01() {
+    public void enabled01() {
         //https://the-internet.herokuapp.com/dynamic_controls adresine gidin
         driver.get("https://the-internet.herokuapp.com/dynamic_controls");
 
@@ -29,16 +29,19 @@ public class C02_SynchronizationWait extends TestBaseBeforeAfter {
         Assert.assertFalse(driver.findElement(By.cssSelector("input[type=text]")).isEnabled());
 
         //Enable butonuna tıklayın ve textbox etkin oluncaya kadar bekleyin
-        WebElement textBox = driver.findElement(By.xpath("(//*[@type='button'])[2]"));
-        textBox.click();
+        WebElement enableBox = driver.findElement(By.xpath("(//*[@type='button'])[2]"));
+        enableBox.click();
+        /*
+        Locate zaten var oldugu icin  burda locatin tiklanabilir olmasini bekleyecek elementToBeClickable() !!
+         */
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        wait.until(ExpectedConditions.elementToBeClickable(textBox));
+        wait.until(ExpectedConditions.elementToBeClickable(enableBox));
 
 
         //“It’s enabled!” mesajinin goruntulendigini dogrulayın.
         Assert.assertTrue(driver.findElement(By.cssSelector("*[id=message]")).isDisplayed());
 
         //Textbox’in etkin oldugunu(enabled) dogrulayın
-        Assert.assertTrue(textBox.isEnabled());
+        Assert.assertTrue(enableBox.isEnabled());
     }
 }

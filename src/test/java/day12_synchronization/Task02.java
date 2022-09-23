@@ -25,7 +25,6 @@ public class Task02 extends TestBaseBeforeAfter {
         //“Our Products” butonuna basin
         WebElement iframe = driver.findElement(By.cssSelector("#frame"));
         driver.switchTo().frame(iframe);
-        Thread.sleep(2000);
 
         driver.findElement(By.xpath("//*[text()='Our Products']")).click();
 

@@ -62,6 +62,7 @@ public class C01_Alert {
 
     @After
     public void tearDown() {
+
         driver.close();
     }
 
