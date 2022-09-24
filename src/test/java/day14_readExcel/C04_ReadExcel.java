@@ -42,6 +42,7 @@ public class C04_ReadExcel {
 
         List<String> list = new ArrayList<>(); //s
         for (int i = 0; i <= sonSatir; i++) {
+
             list.add(wb.getSheet("Sayfa1").getRow(i).getCell(3).toString());
         }
         list.forEach(System.out::println);
