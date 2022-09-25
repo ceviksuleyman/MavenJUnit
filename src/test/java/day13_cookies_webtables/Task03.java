@@ -28,8 +28,8 @@ public class Task03 extends TestBaseBeforeAfter {
         driver.get("https://demoqa.com/webtables");
 
 
-        // Headers da bulunan department isimlerini yazdirin
 
+        // Headers da bulunan department isimlerini yazdirin
         // tek tek
         System.out.println("Departman -> 1 : " +
                 driver.findElement(By.cssSelector("div.rt-tbody>.rt-tr-group>.rt-tr.-odd>:nth-last-of-type(2)")).getText());
@@ -46,10 +46,12 @@ public class Task03 extends TestBaseBeforeAfter {
             System.out.println(w.getText());
         }
 
+
+
+
         // sutunun basligini yazdirin
         WebElement sutunBasligi = driver.findElement(By.cssSelector(".rt-table>.rt-thead.-header>.rt-tr>:nth-child(6)"));
         System.out.println("Sutun Basligi Departman -> " + sutunBasligi.getText());
-
 
         System.out.println("Butun Basliklar --------------------------------------------------------------");
         List<WebElement> basliklar = driver.findElements(By.cssSelector(".rt-table>.rt-thead.-header"));
@@ -60,10 +62,12 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
 
+
         // Tablodaki tum datalari yazdirin
         List<WebElement> tableData = driver.findElements(By.cssSelector(".rt-tbody>.rt-tr-group"));
         System.out.println("Tablodaki Butun Datalar ---------------------------------------------------------");
         tableData.forEach(t -> System.out.println(t.getText()));
+
 
 
 
@@ -73,9 +77,11 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
 
+
         //Tablodaki satir sayisini yazdirin
         List<WebElement> satirSayisi = driver.findElements(By.cssSelector(".rt-tbody>.rt-tr-group"));
         System.out.println("Tablodaki Satir sayisi -> " + satirSayisi.size());
+
 
 
 
@@ -92,7 +98,6 @@ public class Task03 extends TestBaseBeforeAfter {
         kolon3.forEach(t -> System.out.println(t.getText()));
 
 
-
         //Tabloda "First Name" i Kierra olan kisinin Salary'sini yazdirin
         WebElement kierraSalary = driver.findElement(By.cssSelector(".rt-tbody>:nth-child(3)>.rt-tr.-odd>:nth-last-of-type(3)"));
         System.out.println("Kierra Salary -> " + kierraSalary.getText());
@@ -100,14 +105,13 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
         // Page sayfasinda bir method olusturun, Test sayfasindan satir ve sutun sayisini  girdigimde bana datayi yazdirsin
-        table(2, 4);
+        table(2, 2);
     }
 
 
-    public void table(int row, int column) {
+    public void table(int row, int column) { // method
 
-        WebElement cell = driver.
-                findElement(By.cssSelector(".rt-tbody>:nth-child(" + row + ")>:nth-child(1)>:nth-child(" + column + ")"));
+        WebElement cell = driver.findElement(By.cssSelector(".rt-tbody>:nth-child(" + row + ")>:nth-child(1)>:nth-child(" + column + ")"));
 
         System.out.println(row + ". satir " + column + " . sutundaki data -> " + cell.getText());
     }
