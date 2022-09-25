@@ -29,6 +29,8 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
         // Headers da bulunan department isimlerini yazdirin
+
+        // tek tek
         System.out.println("Departman -> 1 : " +
                 driver.findElement(By.cssSelector("div.rt-tbody>.rt-tr-group>.rt-tr.-odd>:nth-last-of-type(2)")).getText());
         System.out.println("Departman -> 2 : " +
@@ -36,7 +38,7 @@ public class Task03 extends TestBaseBeforeAfter {
         System.out.println("Departman -> 3 : " +
                 driver.findElement(By.cssSelector("div.rt-tbody>:nth-child(3)>.rt-tr.-odd>:nth-last-of-type(2)")).getText());
 
-        // *********** .rt-tbody>.rt-tr-group>:nth-last-of-type(1)>:nth-child(6)
+        // hepsi
         List<WebElement> department = driver.findElements(By.cssSelector(".rt-tbody>.rt-tr-group>:nth-last-of-type(1)>:nth-child(6)"));
         System.out.println("Departman isimler -> ");
         for (WebElement w : department) {
@@ -44,13 +46,12 @@ public class Task03 extends TestBaseBeforeAfter {
             System.out.println(w.getText());
         }
 
-
         // sutunun basligini yazdirin
         WebElement sutunBasligi = driver.findElement(By.cssSelector(".rt-table>.rt-thead.-header>.rt-tr>:nth-child(6)"));
-        System.out.println("Sutun Basligi -> " + sutunBasligi.getText());
+        System.out.println("Sutun Basligi Departman -> " + sutunBasligi.getText());
 
 
-        System.out.println("Basliklar -----------------------------------------------");
+        System.out.println("Butun Basliklar --------------------------------------------------------------");
         List<WebElement> basliklar = driver.findElements(By.cssSelector(".rt-table>.rt-thead.-header"));
         for (WebElement w : basliklar) {
 
@@ -61,7 +62,7 @@ public class Task03 extends TestBaseBeforeAfter {
 
         // Tablodaki tum datalari yazdirin
         List<WebElement> tableData = driver.findElements(By.cssSelector(".rt-tbody>.rt-tr-group"));
-        System.out.println("Tablodaki Butun Datalar ----------------------------------------------------");
+        System.out.println("Tablodaki Butun Datalar ---------------------------------------------------------");
         tableData.forEach(t -> System.out.println(t.getText()));
 
 
@@ -79,15 +80,15 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
         //Tablodaki sutun sayisini yazdirin
-        List<WebElement> baslikSutunSayisi = driver.findElements(By.cssSelector(".rt-thead.-header>.rt-tr>.rt-th.rt-resizable-header.-cursor-pointer"));
-        System.out.println("Tablodaki Sutun Sayisi -> " + baslikSutunSayisi.size());
-        // baslikSutunSayisi.forEach(t -> System.out.println(t.getText()));
+        List<WebElement> SutunSayisi = driver.findElements(By.cssSelector(".rt-thead.-header>.rt-tr>.rt-th.rt-resizable-header.-cursor-pointer"));
+        System.out.println("Tablodaki Sutun Sayisi -> " + SutunSayisi.size());
+        // baslikSutunSayisi.forEach(t -> System.out.println(t.getText()));  // ayni zamanda baslik isimlerini de verir.
 
 
 
         //Tablodaki 3.kolonu yazdirin
         List<WebElement> kolon3 = driver.findElements(By.cssSelector(".rt-tbody>.rt-tr-group>:nth-last-of-type(1)>:nth-child(3)"));
-        System.out.println("Kolon3 Data Age-> ");
+        System.out.println("Kolon3 Data Age -> ");
         kolon3.forEach(t -> System.out.println(t.getText()));
 
 
