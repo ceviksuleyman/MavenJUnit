@@ -105,7 +105,7 @@ public class Task03 extends TestBaseBeforeAfter {
 
 
         // Page sayfasinda bir method olusturun, Test sayfasindan satir ve sutun sayisini  girdigimde bana datayi yazdirsin
-        table(2, 2);
+        table(3, 3);
     }
 
 

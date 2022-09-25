@@ -10,7 +10,7 @@ import java.io.IOException;
 public class C01_ReadExcel {
 
     @Test
-    public void readExcelTest01() throws IOException, IOException {
+    public void readExcelTest01() throws IOException {
 
         //- Dosya yolunu bir String degiskene atayalim
         String dosyaYolu = "src/resources/ulkeler.xlsx";

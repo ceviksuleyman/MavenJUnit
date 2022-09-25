@@ -1,15 +1,22 @@
 package automation_exercise;
 
 import com.github.javafaker.Faker;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import utilities.TestBaseBeforeAfter;
+import org.openqa.selenium.support.ui.Select;
 
-public class A101 extends TestBaseBeforeAfter {
+import java.time.Duration;
+
+public class A101 {
 
         /*
      Uçtan uca ödeme ekranına kadar Selenium’da java dili ile chrome browser kullanarak test otomasyon ödevi yapılacak.
@@ -27,6 +34,11 @@ public class A101 extends TestBaseBeforeAfter {
     - Siparişi tamamla butonuna tıklayarak, ödeme ekranına gidildiği ,doğru ekrana yönlendiklerini kontrol edecekler.
      */
 
+    WebDriver driver;
+    Faker faker = new Faker();
+    Select select;
+    Actions actions;
+
     @Test
     public void test() throws InterruptedException {
 
@@ -41,33 +53,34 @@ public class A101 extends TestBaseBeforeAfter {
         System.out.println("Cerezler kabul edildi.");
 
 
-        // Çıkmadan önce gözat kısmı kapatılır
-        // driver.findElement(By.xpath("//*[text()='X']")).click();
-
 
         //giyim aksesuar tıklanır
-        driver.findElement(By.xpath("(//*[@title='GİYİM & AKSESUAR'])[1]")).click();
+        WebElement giyimAksesuar = driver.findElement(By.cssSelector(".desktop-menu>:nth-child(4)"));
+        actions.moveToElement(giyimAksesuar).perform();
+        Thread.sleep(1000);
         System.out.println("Giyim ve aksesuar kategorisi secildi.");
 
 
+
         //Kategorilerden kadın içgiyim seçilir
-        driver.findElement(By.xpath("//a[@data-value='1565']")).click();
-        Thread.sleep(2000);
         System.out.println("Kategorilerden icgiyim secildi");
 
 
         //seçeneklerden kadın dizaltı çorap seçilir
-        driver.findElement(By.xpath("//a[@data-value='1567']")).click();
-        System.out.println("Seceneklerden dizalti corap secildi.");
+        driver.findElement(By.xpath("//*[@title='Dizaltı Çorap']")).click();
+        System.out.println("Diz Alti Corap Secildi");
+        Thread.sleep(1000);
 
 
         //İlk çıkan çorap tıklanır
-        driver.findElement(By.xpath("//*[@alt='Penti Kadın 50 Denye Pantolon Çorabı Siyah']")).click();
+        driver.findElement(By.xpath("(//*[@class=' ls-is-cached lazyloaded'])[1]")).click();
         System.out.println("Ilk cikan corap secildi.");
+        Thread.sleep(1000);
 
 
         //Siyah olduğu doğrulanır
-        Assert.assertTrue(driver.findElement(By.xpath("//*[text()='SİYAH']")).isDisplayed());
+        String actualColor = driver.findElement(By.xpath("//*[.='SİYAH']")).getText();
+        Assert.assertEquals("SİYAH", actualColor);
         System.out.println("Secilen corabin siyah oldugu dogrulandi.");
 
 
@@ -76,117 +89,109 @@ public class A101 extends TestBaseBeforeAfter {
 
 
         //Sepete ekle butonu tıklanır
-        driver.findElement(By.xpath("//*[@class='add-to-basket button green block with-icon js-add-basket']")).click();
+        driver.findElement(By.cssSelector(".add-to-basket.button")).click();
         System.out.println("Sepete ekle butonu tiklandi");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Sepeti görüntüle butonu tıklanır
-        driver.findElement(By.xpath("(//*[text()='Sepeti Görüntüle'])[2]")).click();
+        driver.findElement(By.cssSelector("a[class=go-to-shop]")).click();
         System.out.println("Sepeti goruntule butonu tiklandi");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Sepeti onayla butonu tıklanır
-        driver.findElement(By.xpath("//*[@class='button green checkout-button block js-checkout-button']")).click();
+        driver.findElement(By.cssSelector(".button.green.checkout-button")).click();
         System.out.println("Sepeti onayla butonu tiklandi");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Üye olmadan devam et butonu tıklanır
-        driver.findElement(By.xpath("//*[@title='ÜYE OLMADAN DEVAM ET']")).click();
+        driver.findElement(By.cssSelector(".auth__form__proceed")).click();
         System.out.println("Uye olmadan devam et butonu tiklandi");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Mail ekranı gelir. Ekranın geldiği doğrulanır
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@class='page-inner']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.xpath("//*[@name='user_email']")).isDisplayed());
         System.out.println("Mail ekraninin geldigi dogrulanir");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Bir mail adresi girilir.
         WebElement mail = driver.findElement(By.xpath("//*[@name='user_email']"));
-        Faker faker = new Faker();
         mail.sendKeys(faker.internet().emailAddress());
+        Thread.sleep(1000);
         mail.sendKeys(Keys.ENTER);
         System.out.println("Mail adresi girilir");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Adres ekranı gelir. Ekranın geldiği doğrulanır.
-        Assert.assertTrue(driver.findElement(By.xpath("//*[@class='page-checkout js-page-checkout js-tab-box']")).isDisplayed());
+        Assert.assertTrue(driver.findElement(By.cssSelector(".addresses")).isDisplayed());
         System.out.println("Adres ekraninin geldigi dogrulanir");
-        Thread.sleep(3000);
+        Thread.sleep(1000);
 
 
         //Adres oluştur seçeneğine tıklanır
         driver.findElement(By.xpath("(//*[@class='new-address js-new-address'])[1]")).click();
         System.out.println("Adres olustur secenegi tiklanir");
-
-
-        /*//Adres Başlığı
-        WebElement adresBasligi = driver.findElement(By.xpath("//*[@placeholder='Ev adresim, iş adresim vb.']"));
-        actions.click(adresBasligi).sendKeys("Ev").sendKeys(Keys.TAB).
-                sendKeys(faker.name().firstName()).sendKeys(Keys.TAB).
-                sendKeys(faker.name().lastName()).sendKeys(Keys.TAB).
-                sendKeys(faker.phoneNumber().phoneNumber()).sendKeys(Keys.TAB).
-                sendKeys(faker.address().country()).sendKeys(Keys.TAB).
-                sendKeys("BURSA").sendKeys(Keys.TAB).
-                sendKeys("NİLÜFER").sendKeys(Keys.TAB).
-                sendKeys("BEŞEVLER MAH").sendKeys(Keys.TAB).
-                sendKeys(faker.address().fullAddress()).sendKeys(Keys.ENTER).perform();
-
-         */
-
-
-        //Adres ekleme kısımları doldurulur
-        Thread.sleep(3000);
-        System.out.println("Adres ekleme ekrani doldurulur");
+        Thread.sleep(1000);
 
 
         //Adres Başlığı
-        driver.findElement(By.xpath("//*[@placeholder='Ev adresim, iş adresim vb.']")).sendKeys("Ev");
-        Thread.sleep(3000);
-        //Ad
-        driver.findElement(By.xpath("//*[@name='first_name']")).sendKeys("Zeliha");
-        Thread.sleep(3000);
-        //Soyad
-        driver.findElement(By.xpath("//*[@name='last_name']")).sendKeys("QA");
-        Thread.sleep(3000);
-        //Telefon
-        driver.findElement(By.xpath("//*[@name='phone_number']")).sendKeys("5436549871");
-        Thread.sleep(3000);
-        //İl seçiniz
-        driver.findElement(By.xpath("//*[@name='city']")).sendKeys("BURSA");
-        Thread.sleep(4000);
-        //İlçe seçiniz
-        driver.findElement(By.xpath("//*[@name='township']")).sendKeys("NİLÜFER");
-        Thread.sleep(5000);
-        //Mahalle seçiniz
-        driver.findElement(By.xpath("//*[@class='js-district']")).sendKeys("BEŞEVLER MAH");
-        Thread.sleep(4000);
-        //Adresinizi yazınız
-        driver.findElement(By.xpath("//*[@name='line']")).sendKeys(faker.address().fullAddress()); //Bu kısımda her seferinde yeni adres girilmesini istiyor.
-        Thread.sleep(4000);
-        Thread.sleep(3000);
-
-
-
-        //Kaydet butonuna tıklanır
-        driver.findElement(By.xpath("//*[@class='button green js-set-country js-prevent-emoji']")).sendKeys(Keys.ENTER);
+        WebElement adresBasligi = driver.findElement(By.cssSelector("input[name=title]"));
+        actions.click(adresBasligi).sendKeys("Ev").
+                sendKeys(Keys.TAB).sendKeys(faker.name().firstName()).
+                sendKeys(Keys.TAB).sendKeys(faker.name().lastName()).
+                sendKeys(Keys.TAB).sendKeys(faker.phoneNumber().phoneNumber()).
+                perform();
+        WebElement sehir = driver.findElement(By.cssSelector(".js-cities"));
+        select = new Select(sehir);
+        select.selectByIndex(34);
+        Thread.sleep(1000);
+        WebElement ilce = driver.findElement(By.cssSelector(".js-township"));
+        select = new Select(ilce);
+        select.selectByIndex(10);
+        Thread.sleep(1000);
+        WebElement mah = driver.findElement(By.cssSelector(".js-district"));
+        select = new Select(mah);
+        select.selectByIndex(3);
+        WebElement adress = driver.findElement(By.cssSelector(".js-address-textarea"));
+        actions.click(adress).
+                sendKeys(faker.address().fullAddress()).
+                sendKeys(Keys.TAB).
+                sendKeys(Keys.ENTER). //Kaydet butonuna tıklanır
+                perform();
+        System.out.println("Adres ekleme ekrani doldurulur");
         System.out.println("Kaydet butonuna basilir");
-        Thread.sleep(5000);
-        //Kaydet ve devam et butonu tıklanır
-        driver.findElement(By.xpath("//button[@class='button block green js-proceed-button']")).click();
-        System.out.println("Kaydet ve devam et butonuna tiklanir.");
         Thread.sleep(3000);
+
+
+        //Kaydet ve devam et butonu tıklanır
+        driver.findElement(By.cssSelector(".button.block.green.js-proceed-button")).click();
+        System.out.println("Kaydet ve devam et butonuna tiklanir.");
+        Thread.sleep(1000);
+
+
         //Ödeme ekranına gelindiği doğrulanır
         Assert.assertTrue(driver.findElement(By.xpath("//*[@class='page-checkout js-page-checkout js-tab-box']")).isDisplayed());
         System.out.println("Odeme ekranina gelindigi dogrulanir.");
+    }
 
+    @Before
+    public void setUp() {
 
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
+        actions = new Actions(driver);
+    }
 
+    @After
+    public void tearDown() {
 
+        //driver.quit();
     }
 }

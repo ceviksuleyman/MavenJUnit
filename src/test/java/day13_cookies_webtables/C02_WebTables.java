@@ -37,15 +37,16 @@ public class C02_WebTables extends TestBaseBeforeAfter {
 
         // table body’sinde bulunan toplam satir(row) sayısını bulun.
         List<WebElement> satirList = driver.findElements(By.xpath("//tbody//tr"));
-        System.out.println("Tablodaki Satir Sayisi -> " + satirList.size());
+        System.out.println("\nTablodaki Satir Sayisi -> " + satirList.size());
 
 
         // Table body’sinde bulunan satirlari(rows) konsolda yazdırın.
+        System.out.println("\nTablodaki satilar");
         satirList.forEach(t -> System.out.println(t.getText()));
 
 
         // 4.satirdaki(row) elementleri konsolda yazdırın.
-        System.out.println("Tablo 4.satir -> " +
+        System.out.println("\nTablo 4.satir -> " +
                 driver.findElement(By.xpath("//tbody//tr[4]")).getText());
     }
 
@@ -64,16 +65,16 @@ public class C02_WebTables extends TestBaseBeforeAfter {
 
         // Tüm table body’sinin boyutunu(sutun sayisi) bulun.
         List<WebElement> sutunSayi = driver.findElements(By.xpath("//thead//tr//th"));
-        System.out.println("Sutun Sayisi -> " + sutunSayi.size());
+        System.out.println("\nSutun Sayisi -> " + sutunSayi.size());
 
 
         // Table’daki tum body’I ve başlıkları(headers) konsolda yazdırın.
         WebElement basliklar = driver.findElement(By.xpath("//thead//tr"));
-        System.out.println("BASLIKLAR\n" + basliklar.getText());
+        System.out.println("\nBASLIKLAR\n" + basliklar.getText());
 
         Thread.sleep(5000);
         WebElement body = driver.findElement(By.xpath("//tbody"));
-        System.out.println("BODY\n" + body.getText());
+        System.out.println("\nBODY\n" + body.getText());
     }
 
     public void login() {
