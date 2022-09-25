@@ -12,7 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -39,6 +41,9 @@ public class A101 {
     Select select;
     Actions actions;
 
+    WebDriverWait wait;
+
+
     @Test
     public void test() throws InterruptedException {
 
@@ -53,13 +58,11 @@ public class A101 {
         System.out.println("Cerezler kabul edildi.");
 
 
-
         //giyim aksesuar tıklanır
         WebElement giyimAksesuar = driver.findElement(By.cssSelector(".desktop-menu>:nth-child(4)"));
         actions.moveToElement(giyimAksesuar).perform();
         Thread.sleep(1000);
         System.out.println("Giyim ve aksesuar kategorisi secildi.");
-
 
 
         //Kategorilerden kadın içgiyim seçilir
@@ -69,13 +72,11 @@ public class A101 {
         //seçeneklerden kadın dizaltı çorap seçilir
         driver.findElement(By.xpath("//*[@title='Dizaltı Çorap']")).click();
         System.out.println("Diz Alti Corap Secildi");
-        Thread.sleep(1000);
 
 
         //İlk çıkan çorap tıklanır
         driver.findElement(By.xpath("(//*[@class=' ls-is-cached lazyloaded'])[1]")).click();
         System.out.println("Ilk cikan corap secildi.");
-        Thread.sleep(1000);
 
 
         //Siyah olduğu doğrulanır
@@ -91,19 +92,16 @@ public class A101 {
         //Sepete ekle butonu tıklanır
         driver.findElement(By.cssSelector(".add-to-basket.button")).click();
         System.out.println("Sepete ekle butonu tiklandi");
-        Thread.sleep(1000);
 
 
         //Sepeti görüntüle butonu tıklanır
         driver.findElement(By.cssSelector("a[class=go-to-shop]")).click();
         System.out.println("Sepeti goruntule butonu tiklandi");
-        Thread.sleep(1000);
 
 
         //Sepeti onayla butonu tıklanır
         driver.findElement(By.cssSelector(".button.green.checkout-button")).click();
         System.out.println("Sepeti onayla butonu tiklandi");
-        Thread.sleep(1000);
 
 
         //Üye olmadan devam et butonu tıklanır
@@ -115,28 +113,23 @@ public class A101 {
         //Mail ekranı gelir. Ekranın geldiği doğrulanır
         Assert.assertTrue(driver.findElement(By.xpath("//*[@name='user_email']")).isDisplayed());
         System.out.println("Mail ekraninin geldigi dogrulanir");
-        Thread.sleep(1000);
 
 
         //Bir mail adresi girilir.
         WebElement mail = driver.findElement(By.xpath("//*[@name='user_email']"));
         mail.sendKeys(faker.internet().emailAddress());
-        Thread.sleep(1000);
         mail.sendKeys(Keys.ENTER);
         System.out.println("Mail adresi girilir");
-        Thread.sleep(1000);
 
 
         //Adres ekranı gelir. Ekranın geldiği doğrulanır.
         Assert.assertTrue(driver.findElement(By.cssSelector(".addresses")).isDisplayed());
         System.out.println("Adres ekraninin geldigi dogrulanir");
-        Thread.sleep(1000);
 
 
         //Adres oluştur seçeneğine tıklanır
         driver.findElement(By.xpath("(//*[@class='new-address js-new-address'])[1]")).click();
         System.out.println("Adres olustur secenegi tiklanir");
-        Thread.sleep(1000);
 
 
         //Adres Başlığı
@@ -152,7 +145,7 @@ public class A101 {
         Thread.sleep(1000);
         WebElement ilce = driver.findElement(By.cssSelector(".js-township"));
         select = new Select(ilce);
-        select.selectByIndex(10);
+        select.selectByIndex(9);
         Thread.sleep(1000);
         WebElement mah = driver.findElement(By.cssSelector(".js-district"));
         select = new Select(mah);
@@ -165,13 +158,18 @@ public class A101 {
                 perform();
         System.out.println("Adres ekleme ekrani doldurulur");
         System.out.println("Kaydet butonuna basilir");
-        Thread.sleep(3000);
+
+
+        //kargo
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement kargo =
+                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[@class='js-checkout-cargo-item'])[1]")));
+        if (!kargo.isSelected()) kargo.click();
 
 
         //Kaydet ve devam et butonu tıklanır
         driver.findElement(By.cssSelector(".button.block.green.js-proceed-button")).click();
         System.out.println("Kaydet ve devam et butonuna tiklanir.");
-        Thread.sleep(1000);
 
 
         //Ödeme ekranına gelindiği doğrulanır
@@ -185,7 +183,7 @@ public class A101 {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(11));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         actions = new Actions(driver);
     }
 
