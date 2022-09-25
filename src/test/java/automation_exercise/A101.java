@@ -87,6 +87,7 @@ public class A101 {
 
         //sayfa yenilenir
         driver.navigate().refresh();
+        Thread.sleep(1000);
 
 
         //Sepete ekle butonu tıklanır
@@ -97,6 +98,7 @@ public class A101 {
         //Sepeti görüntüle butonu tıklanır
         driver.findElement(By.cssSelector("a[class=go-to-shop]")).click();
         System.out.println("Sepeti goruntule butonu tiklandi");
+        Thread.sleep(1000);
 
 
         //Sepeti onayla butonu tıklanır
@@ -141,11 +143,11 @@ public class A101 {
                 perform();
         WebElement sehir = driver.findElement(By.cssSelector(".js-cities"));
         select = new Select(sehir);
-        select.selectByIndex(34);
+        select.selectByIndex(35);
         Thread.sleep(1000);
         WebElement ilce = driver.findElement(By.cssSelector(".js-township"));
         select = new Select(ilce);
-        select.selectByIndex(9);
+        select.selectByIndex(3);
         Thread.sleep(1000);
         WebElement mah = driver.findElement(By.cssSelector(".js-district"));
         select = new Select(mah);
@@ -158,13 +160,16 @@ public class A101 {
                 perform();
         System.out.println("Adres ekleme ekrani doldurulur");
         System.out.println("Kaydet butonuna basilir");
+        Thread.sleep(3000);
 
 
         //kargo
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement kargo =
-                wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//*[@class='js-checkout-cargo-item'])[1]")));
+        WebElement kargo = driver.findElement(By.xpath("(//*[@class='js-checkout-cargo-item'])[1]"));
         if (!kargo.isSelected()) kargo.click();
+        Thread.sleep(1000);
+        //wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        //WebElement kargo = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//*[@class='js-checkout-cargo-item'])[1]")));
+        //if (!kargo.isSelected()) kargo.click();
 
 
         //Kaydet ve devam et butonu tıklanır
