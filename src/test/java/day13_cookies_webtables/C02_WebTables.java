@@ -41,7 +41,7 @@ public class C02_WebTables extends TestBaseBeforeAfter {
 
 
         // Table body’sinde bulunan satirlari(rows) konsolda yazdırın.
-        System.out.println("\nTablodaki satilar");
+        System.out.println("\nTablodaki satirlar");
         satirList.forEach(t -> System.out.println(t.getText()));
 
 
@@ -72,7 +72,7 @@ public class C02_WebTables extends TestBaseBeforeAfter {
         WebElement basliklar = driver.findElement(By.xpath("//thead//tr"));
         System.out.println("\nBASLIKLAR\n" + basliklar.getText());
 
-        Thread.sleep(5000);
+
         WebElement body = driver.findElement(By.xpath("//tbody"));
         System.out.println("\nBODY\n" + body.getText());
     }

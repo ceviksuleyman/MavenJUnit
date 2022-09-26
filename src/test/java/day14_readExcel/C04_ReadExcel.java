@@ -27,7 +27,7 @@ public class C04_ReadExcel {
 
         //-Turkce baskentler sutununu yazdiralim
         int sonSatir = wb.getSheet("Sayfa1").getLastRowNum();
-        System.out.println(sonSatir+1); // index 0'dan basladigi icin 0 -> 190 => 191
+        System.out.println(sonSatir + 1); // index 0'dan basladigi icin 0 -> 190 => 191
         /*
         getLastRowNum() method'u bize excel sayfasindaki tum satir numarasini verir
          */
