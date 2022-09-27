@@ -20,8 +20,10 @@ public class Task01 extends TestBaseBeforeAfter {
     @Test
     public void test01() throws IOException {
 
+
         //amazon anasayfaya gidin
         driver.get("https://www.amazon.com");
+
 
 
         //amazon anasayfaya gittiginizi test edin ve tum sayfanin goruntusunu kaydedin
@@ -30,11 +32,13 @@ public class Task01 extends TestBaseBeforeAfter {
         FileUtils.copyFile(tumSayfa, new File("target/screenShot/allPage" + tarih1 + ".jpeg"));
 
 
+
         // Nutella icin arama yapin sonucun Nutella icerdigini test edin
         driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Nutella", Keys.ENTER);
         WebElement nutellaSonuc = driver.findElement(By.xpath("(//div[@class='sg-col-inner'])[1]"));
         File temp1 = nutellaSonuc.getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(temp1, new File("target/screenShot/nutellaSonuc.jpeg"));
+
 
 
         //ilk urunun goruntusunu alin
