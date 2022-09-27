@@ -25,7 +25,7 @@ public class C03_ReadExcel {
 
     }
 
-    public void cell(int row, int column) {
+    public static void cell(int row, int column) {
 
         String dosyaYol = "src/resources/ulkeler.xlsx";
 
