@@ -139,7 +139,7 @@ public class A101 {
         actions.click(adresBasligi).sendKeys("Ev").
                 sendKeys(Keys.TAB).sendKeys(faker.name().firstName()).
                 sendKeys(Keys.TAB).sendKeys(faker.name().lastName()).
-                sendKeys(Keys.TAB).sendKeys(faker.phoneNumber().phoneNumber()).
+                sendKeys(Keys.TAB).sendKeys(faker.number().digits(11)).
                 perform();
         WebElement sehir = driver.findElement(By.cssSelector(".js-cities"));
         select = new Select(sehir);
