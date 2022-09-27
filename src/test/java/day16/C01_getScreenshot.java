@@ -1,4 +1,4 @@
-package day15_excel_screenShot;
+package day16;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
@@ -9,7 +9,7 @@ import utilities.TestBaseBeforeAfter;
 import java.io.File;
 import java.io.IOException;
 
-public class C04_getScreenshot extends TestBaseBeforeAfter {
+public class C01_getScreenshot extends TestBaseBeforeAfter {
 
     @Test
     public void test01() throws IOException, IOException {
