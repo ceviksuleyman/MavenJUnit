@@ -1,4 +1,4 @@
-package day16;
+package day16_getScreenshot_JSExecutors;
 
 import org.junit.Test;
 import org.openqa.selenium.By;

@@ -1,4 +1,4 @@
-package day16;
+package day16_getScreenshot_JSExecutors;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;

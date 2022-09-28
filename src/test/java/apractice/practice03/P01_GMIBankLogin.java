@@ -34,7 +34,7 @@ public class P01_GMIBankLogin {
 
         Thread.sleep(4000);
 
-        driver.quit();
+        //driver.quit();
         /*
         ElementNotVisibleException: Selenium Web sayfasında görünür olmayan bir elementi bulmaya çalıştığında karşılaşılan bir exception türüdür.
 
