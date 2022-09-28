@@ -1,7 +1,6 @@
-package day15_excel_screenShot;
+package day15_excel;
 
 import org.apache.poi.ss.usermodel.*;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.FileInputStream;

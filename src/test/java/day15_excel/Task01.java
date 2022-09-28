@@ -1,4 +1,4 @@
-package day15_excel_screenShot;
+package day15_excel;
 
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -7,7 +7,6 @@ import org.junit.Test;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
